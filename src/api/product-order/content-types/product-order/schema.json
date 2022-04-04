@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_orders",
+  "info": {
+    "singularName": "product-order",
+    "pluralName": "product-orders",
+    "displayName": "Product Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "product_orders"
+    },
+    "order_items": {
+      "displayName": "Order Item",
+      "type": "component",
+      "repeatable": true,
+      "component": "e-commerce.order-item"
+    },
+    "price_total": {
+      "type": "biginteger"
+    },
+    "xendit_invoice_id": {
+      "type": "string"
+    },
+    "status_order": {
+      "type": "enumeration",
+      "enum": [
+        "new",
+        "success",
+        "failed"
+      ],
+      "default": "new"
+    }
+  }
+}
