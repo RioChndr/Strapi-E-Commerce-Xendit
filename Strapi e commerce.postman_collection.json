@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "6aed731f-e5e8-4b13-8091-86582b301e1b",
+		"name": "Strapi e commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"order_items\": [\r\n            {\r\n                \"product\": 1,\r\n                \"amount\": 2\r\n            },\r\n            {\r\n                \"product\": 2,\r\n                \"amount\": 4\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/api/product-orders",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"api",
+						"product-orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Strapi user\",\r\n    \"email\": \"user@strapi.io\",\r\n    \"password\": \"strapiPassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/api/auth/local/register",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"local",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identifier\": \"user@strapi.io\",\r\n    \"password\": \"strapiPassword\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/api/auth/local",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"local"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get order product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/api/product-orders",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"api",
+						"product-orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify success",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"579c8d61f23fa4ca35e52da4\",\r\n    \"external_id\": \"invoice_123124123\",\r\n    \"user_id\": \"5781d19b2e2385880609791c\",\r\n    \"is_high\": true,\r\n    \"payment_method\": \"BANK_TRANSFER\",\r\n    \"status\": \"PAID\",\r\n    \"merchant_name\": \"Xendit\",\r\n    \"amount\": 50000,\r\n    \"paid_amount\": 50000,\r\n    \"bank_code\": \"PERMATA\",\r\n    \"paid_at\": \"2016-10-12T08:15:03.404Z\",\r\n    \"payer_email\": \"wildan@xendit.co\",\r\n    \"description\": \"This is a description\",\r\n    \"adjusted_received_amount\": 47500,\r\n    \"fees_paid_amount\": 0,\r\n    \"updated\": \"2016-10-10T08:15:03.404Z\",\r\n    \"created\": \"2016-10-10T08:15:03.404Z\",\r\n    \"currency\": \"IDR\",\r\n    \"payment_channel\": \"PERMATA\",\r\n    \"payment_destination\": \"888888888888\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/api/verify-payment/xendit",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"api",
+						"verify-payment",
+						"xendit"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjQ5MDM5NzkzLCJleHAiOjE2NTE2MzE3OTN9.VziZu9rIHq3pMFpTqV0bxrDBdIRip6PorXlu1E5cz9w",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "localhost:1337"
+		}
+	]
+}
